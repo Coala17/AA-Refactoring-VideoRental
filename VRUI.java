@@ -74,27 +74,61 @@ public class VRUI {
 		System.out.println(result);
 	}
 
+	private void rentVideo() {
+		String customerName = inputCustomer();
+
+		System.out.println("Enter video title to rent: ") ;
+		String videoTitle = scanner.next() ;
+
+		rentalService.rentVideo(customerName, videoTitle);
+	}
+
+	private void returnVideo() {
+		String customerName = inputCustomer();
+
+		System.out.println("Enter video title to return: ") ;
+		String videoTitle = scanner.next() ;
+
+		rentalService.returnVideo(customerName, videoTitle);
+	}
+
+	private void registerCustomer() {
+		System.out.println("Enter customer name: ") ;
+		String name = scanner.next();
+		rentalService.registerCustomer(name);
+	}
+
+	private void registerVideo() {
+		System.out.println("Enter video title to register: ") ;
+		String title = scanner.next() ;
+
+		System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):") ;
+		int videoType = scanner.nextInt();
+
+		System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;
+		int priceCode = scanner.nextInt();
+
+		rentalService.registerVideo(title, videoType, priceCode);
+	}
+	private void clearRentals() {
+		String customerName = inputCustomer();
+		List<String> rentalListStr = rentalService.clearRentals(customerName);
+		for ( String rentalStr: rentalListStr ) {
+			System.out.println(rentalStr) ;
+		}
+	}
+
 	public void processCommand(int command) {
-		String customerName;
 		switch ( command ) {
 			//case 0: quit = true ; break ;
-			case 1: listCustomers() ; break ;
-			case 2: listVideos() ; break ;
-			case 3: rentalService.register("customer") ; break ;
-			case 4: rentalService.register("video") ; break ;
-			case 5:
-				customerName = inputCustomer();
-				rentalService.rentVideo(customerName);
-				break;
-			case 6:
-				customerName = inputCustomer();
-				rentalService.returnVideo(customerName);
-				break;
+			case 1: listCustomers(); break;
+			case 2: listVideos(); break;
+			case 3: registerCustomer(); break;
+			case 4: registerVideo(); break;
+			case 5: rentVideo(); break;
+			case 6: returnVideo(); break;
 			case 7: getCustomerReport(); break;
-			case 8:
-				customerName = inputCustomer();
-				rentalService.clearRentals(customerName);
-				break ;
+			case 8: clearRentals(); break;
 			case -1: rentalService.init() ; break ;
 			default: break ;
 		}
