@@ -68,6 +68,12 @@ public class VRUI {
 		System.out.println("End of list");
 	}
 
+	private void getCustomerReport() {
+		String customerName = inputCustomer();
+		String result = rentalService.getCustomerReport(customerName);
+		System.out.println(result);
+	}
+
 	public void processCommand(int command) {
 		String customerName;
 		switch ( command ) {
@@ -84,10 +90,7 @@ public class VRUI {
 				customerName = inputCustomer();
 				rentalService.returnVideo(customerName);
 				break;
-			case 7:
-				customerName = inputCustomer();
-				rentalService.getCustomerReport(customerName);
-				break;
+			case 7: getCustomerReport(); break;
 			case 8:
 				customerName = inputCustomer();
 				rentalService.clearRentals(customerName);

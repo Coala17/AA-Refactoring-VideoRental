@@ -95,14 +95,13 @@ public class RentalService {
         return customerListStr;
     }
 
-    public void getCustomerReport(String customerName) {
+    public String getCustomerReport(String customerName) {
         Customer foundCustomer = findCustomer(customerName);
 
         if ( foundCustomer == null ) {
-            System.out.println("No customer found") ;
+            return "No customer found" ;
         } else {
-            String result = foundCustomer.getReport() ;
-            System.out.println(result);
+            return foundCustomer.getReport() ;
         }
     }
 
