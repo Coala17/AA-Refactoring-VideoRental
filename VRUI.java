@@ -11,18 +11,16 @@ public class VRUI {
 	public static void main(String[] args) {
 		VRUI ui = new VRUI();
 
-		boolean quit = false ;
-		while ( ! quit ) {
+		while (true) {
 			ui.showCommand();
-			int command = ui.inputCommand();
-			quit = ui.isQuit(command);
-			if(!quit) {
-				ui.processCommand(command);
-			}
+			int selectCommand = ui.inputCommand();
+			boolean quit = ui.isQuit(selectCommand);
+			if(quit) break;
+
+			ui.processCommand(selectCommand);
 		}
 		System.out.println("Bye");
 	}
-
 
 	public void showCommand() {
 		System.out.println("\nSelect a command !");
@@ -95,7 +93,7 @@ public class VRUI {
 	private void registerCustomer() {
 		System.out.println("Enter customer name: ") ;
 		String name = scanner.next();
-		rentalService.registerCustomer(name);
+		rentalService.registerCustomer(name) ;
 	}
 
 	private void registerVideo() {
@@ -108,11 +106,11 @@ public class VRUI {
 		System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;
 		int priceCode = scanner.nextInt();
 
-		rentalService.registerVideo(title, videoType, priceCode);
+		rentalService.registerVideo(title, videoType, priceCode) ;
 	}
 	private void clearRentals() {
-		String customerName = inputCustomer();
-		List<String> rentalListStr = rentalService.clearRentals(customerName);
+		String customerName = inputCustomer() ;
+		List<String> rentalListStr = rentalService.clearRentals(customerName) ;
 		for ( String rentalStr: rentalListStr ) {
 			System.out.println(rentalStr) ;
 		}
@@ -120,7 +118,6 @@ public class VRUI {
 
 	public void processCommand(int command) {
 		switch ( command ) {
-			//case 0: quit = true ; break ;
 			case 1: listCustomers(); break;
 			case 2: listVideos(); break;
 			case 3: registerCustomer(); break;
