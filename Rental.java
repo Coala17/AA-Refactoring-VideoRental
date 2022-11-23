@@ -6,6 +6,7 @@ public class Rental {
 	private Date rentDate ;
 	private Date returnDate ;
 
+	// test
 	public Rental(Video video) {
 		this.video = video ;
 		status = 0 ;
