@@ -51,12 +51,29 @@ public class VRUI {
 		return customerName;
 	}
 
+	private void listVideos() {
+		System.out.println("List of videos");
+		List<String> videoListStr = rentalService.listVideos();
+		for ( String videoStr: videoListStr ) {
+			System.out.println(videoStr) ;
+		}
+		System.out.println("End of list");
+	}
+	private void listCustomers() {
+		System.out.println("List of customers");
+		List<String> customerListStr = rentalService.listCustomers();
+		for ( String customerList: customerListStr ) {
+			System.out.println(customerList) ;
+		}
+		System.out.println("End of list");
+	}
+
 	public void processCommand(int command) {
 		String customerName;
 		switch ( command ) {
 			//case 0: quit = true ; break ;
-			case 1: rentalService.listCustomers() ; break ;
-			case 2: rentalService.listVideos() ; break ;
+			case 1: listCustomers() ; break ;
+			case 2: listVideos() ; break ;
 			case 3: rentalService.register("customer") ; break ;
 			case 4: rentalService.register("video") ; break ;
 			case 5:

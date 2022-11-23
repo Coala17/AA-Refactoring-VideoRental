@@ -74,29 +74,25 @@ public class RentalService {
         }
     }
 
-    public void listVideos() {
-//        for ( Video video: videos ) {
-//
-//        }
-        System.out.println("List of videos");
-
+    public List<String> listVideos() {
+        List<String> videoListStr = new ArrayList<>();
         for ( Video video: videos ) {
-            System.out.println("Price code: " + video.getPriceCode() +"\tTitle: " + video.getTitle()) ;
+            videoListStr.add("Price code: " + video.getPriceCode() +"\tTitle: " + video.getTitle()) ;
         }
-        System.out.println("End of list");
+        return videoListStr;
     }
 
-    public void listCustomers() {
-        System.out.println("List of customers");
+    public List<String> listCustomers() {
+        List<String> customerListStr = new ArrayList<>();
         for ( Customer customer: customers ) {
-            System.out.println("Name: " + customer.getName() +
+            customerListStr.add("Name: " + customer.getName() +
                     "\tRentals: " + customer.getRentals().size()) ;
             for ( Rental rental: customer.getRentals() ) {
-                System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
-                System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+                customerListStr.add("\tTitle: " + rental.getVideo().getTitle()
+                        + " \tPrice Code: " + rental.getVideo().getPriceCode()) ;
             }
         }
-        System.out.println("End of list");
+        return customerListStr;
     }
 
     public void getCustomerReport(String customerName) {
