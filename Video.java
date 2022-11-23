@@ -5,12 +5,16 @@ public class Video {
 
 	private int priceCode ;
 	public static final int REGULAR = 1 ;
-	public static final int NEW_RELEASE =2 ;
+	public static final int NEW_RELEASE = 2 ;
 
 	private int videoType ;
 	public static final int VHS = 1 ;
 	public static final int CD = 2 ;
 	public static final int DVD = 3 ;
+
+	public static final int VHS_PENALTY = 1 ;
+	public static final int CD_PENALTY = 2 ;
+	public static final int DVD_PENALTY = 3 ;
 
 	private Date registeredDate ;
 	private boolean rented ;
@@ -23,13 +27,13 @@ public class Video {
 	}
 
 	public int getLateReturnPointPenalty() {
-		int pentalty = 0 ;
+		int penalty = 0 ;
 		switch ( videoType ) {
-			case VHS: pentalty = 1 ; break ;
-			case CD: pentalty = 2 ; break ;
-			case DVD: pentalty = 3 ; break ;
+			case VHS: penalty = VHS_PENALTY ; break ;
+			case CD: penalty = CD_PENALTY ; break ;
+			case DVD: penalty = DVD_PENALTY ; break ;
 		}
-		return pentalty ;
+		return penalty ;
 	}
 	public int getPriceCode() {
 		return priceCode;
@@ -57,10 +61,6 @@ public class Video {
 
 	public Date getRegisteredDate() {
 		return registeredDate;
-	}
-
-	public void setRegisteredDate(Date registeredDate) {
-		this.registeredDate = registeredDate;
 	}
 
 	public int getVideoType() {
