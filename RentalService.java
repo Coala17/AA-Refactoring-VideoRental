@@ -34,7 +34,7 @@ public class RentalService {
                 break ;
             }
         }
-        //if ( foundCustomer == null ) return ;
+        if ( foundCustomer == null ) return null;
         return foundCustomer;
     }
 
@@ -111,6 +111,7 @@ public class RentalService {
 
     public void returnVideo(String customerName, String videoTitle) {
         Customer foundCustomer = findCustomer(customerName);
+        if ( foundCustomer == null ) return ;
 
         List<Rental> customerRentals = foundCustomer.getRentals() ;
         for ( Rental rental: customerRentals ) {
